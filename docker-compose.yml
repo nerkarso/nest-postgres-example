@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:5000
+    depends_on:
+      - db
+    volumes:
+      - nest-example-uploads:/app/uploads
+  db:
+    container_name: postgres
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - nest-example-postgres:/var/lib/postgresql/data
+
+volumes:
+  nest-example-uploads:
+  nest-example-postgres:
