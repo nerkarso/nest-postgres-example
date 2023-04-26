@@ -3,7 +3,7 @@
 ###################
 
 FROM node:18 As development
-RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+RUN curl -f https://get.pnpm.io/v8.3.0.js | node - add --global pnpm
 
 # Required for Prisma Client to work in container
 RUN apt-get update && apt-get install -y openssl
@@ -35,7 +35,7 @@ USER node
 ###################
 
 FROM node:18 As build
-RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+RUN curl -f https://get.pnpm.io/v8.3.0.js | node - add --global pnpm
 
 WORKDIR /usr/src/app
 
