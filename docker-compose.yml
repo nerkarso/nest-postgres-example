@@ -16,7 +16,7 @@ services:
     depends_on:
       - db
     volumes:
-      - uploads:/app/uploads
+      - uploads:/uploads
   db:
     container_name: postgres
     image: postgres:15-alpine
